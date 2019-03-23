@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +12,12 @@ public class Blog
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id; //Obs.: precisa ser Integer invez de int devido ao JPA
+	
+	@Column(name="Titulo", length=100, nullable=false) 
 	private String titulo;
+	@Column(name="Categoria", length=100, nullable=false) 
 	private String categoria; //Poderia ser Enum
+	@Column(name="Texto", length=100, nullable=false) 
 	private String texto;
 	
 	public Blog() 
@@ -25,7 +30,6 @@ public class Blog
 		this.categoria = categoria;
 		this.texto = texto;
 	}
-
 
 	//Get/Set
 	public Integer getId() {
@@ -51,24 +55,6 @@ public class Blog
 	}
 	public void setTexto(String texto) {
 		this.texto = texto;
-	}
-
-	@Override
-	public int hashCode() 
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
-		result = prime * result + ((categoria == null) ? 0 : categoria.hashCode());
-		result = prime * result + ((texto == null) ? 0 : texto.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object arg0) 
-	{
-		return this.id == arg0;
 	}
 		
 }
